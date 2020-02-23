@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
 
 class BoxerState extends State<Boxer> {
   final _boxers = <String>[];
-  final _save = <int>[];
+  // final _save = <int>[];
 
   Widget _buildBox(String url) {
     final _name = WordPair.random().asPascalCase;
@@ -71,16 +71,37 @@ class BoxerState extends State<Boxer> {
     return SizedBox(
       child: Card(
         elevation: 5,
-        child: Column(children: [
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
           ListTile(
             title: Text(_name),
             subtitle: Text(_local),
             trailing: Icon(Icons.menu),
           ),
           Image.network(url),
-          ListTile(
-            leading: Icon(Icons.favorite),
-            trailing: Icon(Icons.save),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              ButtonBar(
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.favorite),
+                    onPressed: null,
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.comment),
+                    onPressed: null,
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.send),
+                    onPressed: null,
+                  ),
+                ],
+              ),
+              IconButton(
+                icon: Icon(Icons.save),
+                onPressed: null,
+              ),
+            ],
           ),
           ListTile(
             title: Text(
