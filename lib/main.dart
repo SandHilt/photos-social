@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final double sizeIcon = 32.0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.red,
               ),
               Container(
-                color: Colors.black,
+                color: Colors.indigo,
               ),
             ]),
             backgroundColor: Colors.black,
@@ -36,14 +38,17 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
               child: TabBar(
                 tabs: [
-                  Tab(icon: Icon(Icons.home)),
-                  Tab(icon: Icon(Icons.search)),
-                  Tab(icon: Icon(Icons.camera)),
-                  Tab(icon: Icon(Icons.favorite)),
-                  Tab(icon: Icon(Icons.account_box)),
+                  Tab(
+                      icon: Icon(
+                    Icons.home,
+                    size: sizeIcon,
+                  )),
+                  Tab(icon: Icon(Icons.search, size: sizeIcon)),
+                  Tab(icon: Icon(Icons.camera, size: sizeIcon)),
+                  Tab(icon: Icon(Icons.favorite, size: sizeIcon)),
+                  Tab(icon: Icon(Icons.account_box, size: sizeIcon)),
                 ],
                 labelColor: Colors.red,
-                labelPadding: EdgeInsets.all(4.0),
                 unselectedLabelColor: Colors.blue,
                 indicatorColor: Colors.transparent,
               ),
