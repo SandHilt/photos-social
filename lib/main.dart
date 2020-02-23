@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
             ),
             body: TabBarView(children: [
               Container(
-                color: Colors.yellow,
+                color: Colors.black,
+                child: Boxer(),
               ),
               Container(
                 color: Colors.orange,
@@ -56,4 +58,57 @@ class MyApp extends StatelessWidget {
           ),
         ));
   }
+}
+
+class BoxerState extends State<Boxer> {
+  final _boxers = <String>[];
+  final _save = <int>[];
+
+  Widget _buildBox(String url) {
+    final _name = WordPair.random().asPascalCase;
+    final _local = WordPair.random().asCamelCase;
+
+    return SizedBox(
+      child: Card(
+        elevation: 5,
+        child: Column(children: [
+          ListTile(
+            title: Text(_name),
+            subtitle: Text(_local),
+            trailing: Icon(Icons.menu),
+          ),
+          Image.network(url),
+          ListTile(
+            leading: Icon(Icons.favorite),
+            trailing: Icon(Icons.save),
+          ),
+          ListTile(
+            title: Text(
+              "Descricao",
+              style: TextStyle(fontSize: 16.0),
+            ),
+          )
+        ]),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(itemBuilder: (context, i) {
+      if (i.isOdd) return Divider();
+      final index = i ~/ 2;
+      if (index >= _boxers.length) {
+        for (int i = 0 + index; i < 10 + index; i++) {
+          _boxers.add("https://placeimg.com/640/480/animals/$i");
+        }
+      }
+      return _buildBox(_boxers[index]);
+    });
+  }
+}
+
+class Boxer extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => BoxerState();
 }
