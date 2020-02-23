@@ -76,6 +76,7 @@ class BoxerState extends State<Boxer> {
             title: Text(_name),
             subtitle: Text(_local),
             trailing: Icon(Icons.menu),
+            leading: Icon(Icons.account_circle),
           ),
           Image.network(url),
           Row(
